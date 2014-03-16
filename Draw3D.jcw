@@ -1,0 +1,16 @@
+<?xml?>
+<workspace>
+	<settings>
+		<label>Draw3D</label>
+	</settings>
+	<users>
+		<user>
+			<path>Draw3D.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>Draw3D.jcp</path>
+		</project>
+	</projects>
+</workspace>

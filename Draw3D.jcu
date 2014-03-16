@@ -1,0 +1,26 @@
+<?xml?>
+<workspace_user>
+	<active_project>
+		<label>Draw3D</label>
+	</active_project>
+	<projects>
+		<project>
+			<label>Draw3D</label>
+			<showfiles>false</showfiles>
+			<folderitem>
+				<path>classes</path>
+			</folderitem>
+			<folderitem>
+				<path>src</path>
+			</folderitem>
+		</project>
+	</projects>
+	<open_files>
+		<docitem>
+			<path>src\Draw3D.java</path>
+			<source>true</source>
+			<index>0</index>
+			<active>true</active>
+		</docitem>
+	</open_files>
+</workspace_user>
