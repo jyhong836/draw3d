@@ -83,6 +83,8 @@ public class mCamera extends mObject {
 	public void capture(mWorld world){
 		Vector obj = world.objects;
 		int size = obj.size();
+		// ####test
+//		System.out.println("capture::draw object:"+obj);
 		if(!obj.isEmpty()){
 			while((--size)>=0){
 				this.drawObject((mObject)obj.elementAt(size));

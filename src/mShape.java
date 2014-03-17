@@ -7,7 +7,7 @@ public class mShape {
 	protected mPoint3[] points;                           //p[0] save the position
 	protected short [][] linepoints = new short [2][];    //lines      (p[0][i],p[1][i])
 	/**triangles  (p[0][i],p[1][i],p[2][i]) 
-	 *  the n vector will be calculate as <p[0],p[1]> X <p[0],p[2]>,
+	 *  the vector n will be calculate as <p[0],p[1]> X <p[0],p[2]>,
 	 *  so you should set the order of tripoints[0,1,2][] correctly
 	 */
 	protected short [][] tripoints = new short [3][];

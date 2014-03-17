@@ -3,10 +3,11 @@
  *
  * 3D Draw Applet application
  *
- * @author jyhong  
+ * @author Junyuan Hong  
  * @version 1.00 13/06/21
  */
- 
+
+import javax.media.j3d.*;
 import java.awt.*;
 import java.applet.*;
 import java.awt.image.BufferedImage;
@@ -87,16 +88,52 @@ class rotateThread extends Thread{
 		canvas.fillTriangle(p);
 		*/
 		
+		/**
+		 * --the way to create objects in a world
+		 * mOject obj = new mObject(...);
+		 * mWorld w = new mWorld();
+		 * w.add(obj);
+		 * --draw it
+		 * mCamera cam = new mCamera(...);
+		 * cam.capture(w); //cam will refresh the bufferedImage
+		 * own.repaint(); //will refresh the window with bufferedImage 
+		 */
+		
 		mCube cube = new mCube(new mPoint3(0,90,-80),100,100,100);
 	//	mCube cube2 = new mCube(new mPoint3(-300,300,0),500,500,500);
 		mCone cone = new mCone(new mPoint3(0,50,0),80,200);
+		mObject obj = new mObject();
+		obj = createRandomSurface(obj,0,200,60,260);
+		/*obj.shape = new mShape();
+		obj.pos=new mPoint3(50,0,0);
+		mPoint3[] points={
+			obj.pos,
+			new mPoint3(50,50,0),
+			new mPoint3(100,0,0),
+			new mPoint3(100,50,0)
+		};
+		short[][] tripoints = {
+				{0,0},
+				{3,2},
+				{1,3}
+		};
+		short[][] linepoints = new short[2][0];
+		obj.center = new mVector3(0,0,0);
+		obj.shape.set(points,linepoints,tripoints);
+		obj.refer = new mReferenceTransformation(new mPoint3(obj.pos,obj.center),
+				new mVector3(0,1,0),
+				new mVector3(1,0,0));*/
 		mGrid grid = new mGrid(100);
+		
 		mWorld w = new mWorld();
 		w.add(cube);
 	//	w.add(cube2);
 		w.add(grid);
 		w.add(cone);
+		w.add(obj);
+		
 		mCamera cam = new mCamera(canvas);
+		
 		
 		cam.capture(w);
 		own.repaint(speed);
@@ -166,5 +203,29 @@ class rotateThread extends Thread{
 	public void setFPS(int fps){
 		this.fps = fps;
 		this.speed = 1000/fps;
+	}
+	
+	/**
+	 * create a random surface
+	 * @param obj
+	 * @param x1:surface x begin
+	 * @param x2:surface x end
+	 * @param y1:surface y begin
+	 * @param y2:surface y end
+	 * @return: the surface mObject
+	 */
+	private mObject createRandomSurface(mObject obj, int x1, int x2, int y1,int y2){
+		int i=0,j=0;
+		x1/=20;
+		x2/=20;
+		y1/=20;
+		y2/=20;
+		mPoint3[][] points = new mPoint3[x2-x1+1][y2-y1+1];
+		for (i=y1;i<=y2;i++){
+			for (j=x1;j<=x2;j++){
+				points[j-x1][i-y1]=new mPoint3(j*20,i*20,(float) (Math.random()*70*Math.exp(0-0.3*j)));
+			}
+		}
+		return new mSurface(points, x2-x1+1, y2-y1+1);
 	}
 }//:~

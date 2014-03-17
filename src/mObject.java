@@ -6,10 +6,10 @@
  */
 public class mObject {
 	/**   below param need to init in child class   */
-	mPoint3 pos;                             //save the POINTER of position
-	mVector3 center = null;                  //save the location of center relative to pos
-	mShape shape;
-	mReferenceTransformation refer;
+	public mPoint3 pos;                             //save the POINTER of position
+	public mVector3 center = null;                  //save the location of center relative to pos
+	public mShape shape;
+	public mReferenceTransformation refer;
 	
 	/**
 	 * Method mObject
